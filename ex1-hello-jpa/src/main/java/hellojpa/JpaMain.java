@@ -21,6 +21,20 @@ public class JpaMain {
 
         try {
 
+            /*
+            //비영속(객체를 생성한 상태)
+            Member member = new Member();
+            member.setId(101L);
+            member.setName("HelloJPA");
+
+            //영속(객체를 저장한 상태)
+            em.persist(member);     // -> 1차캐시에 저장
+            */
+
+            Member findMember1 = em.find(Member.class, 101L);
+            Member findMember2 = em.find(Member.class, 101L);
+            System.out.println("동일성 비교 : "+ (findMember1 == findMember2)); // true
+
 //            Member findMember = em.find(Member.class, 1L);
 //            findMember.setName("HelloJPA"); // name 수정
 
@@ -28,16 +42,16 @@ public class JpaMain {
                 JPQL : 엔티티 객체를 대상으로 쿼리(객체 지향 쿼리)
                 SQL : 데이터베이스 테이블을 대상으로 쿼리
             */
-            List<Member> result = em.createQuery("select m from Member m", Member.class)
+            /*List<Member> result = em.createQuery("select m from Member m", Member.class)
                     .setMaxResults(5)
                     .setMaxResults(8)   // 페이지네이션
                     .getResultList();
 
             for (Member member : result) {
                 System.out.println(member.getName());
-            }
+            }*/
 
-            tx.commit();    // 커밋 필수
+            tx.commit();    // 커밋 필수 & 커밋하는 순간 sql을 데이터에 보냄
         } catch (Exception e) {
             tx.rollback();
         } finally {
