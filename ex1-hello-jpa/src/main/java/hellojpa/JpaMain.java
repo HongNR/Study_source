@@ -31,9 +31,11 @@ public class JpaMain {
             em.persist(member);     // -> 1차캐시에 저장
             */
 
+            /*
             Member findMember1 = em.find(Member.class, 101L);
             Member findMember2 = em.find(Member.class, 101L);
             System.out.println("동일성 비교 : "+ (findMember1 == findMember2)); // true
+            */
 
 //            Member findMember = em.find(Member.class, 1L);
 //            findMember.setName("HelloJPA"); // name 수정
@@ -50,6 +52,15 @@ public class JpaMain {
             for (Member member : result) {
                 System.out.println(member.getName());
             }*/
+
+            Member member1 = new Member(150L, "A");
+            Member member2 = new Member(160L, "B");
+
+            em.persist(member1);
+            em.persist(member2);
+
+            Member member = em.find(Member.class, 150L);
+            member.setName("ZZZZZ");    // 데이터 수정 , em.persist는 작성하지 않음
 
             tx.commit();    // 커밋 필수 & 커밋하는 순간 sql을 데이터에 보냄
         } catch (Exception e) {
