@@ -1,12 +1,11 @@
 package hellojpa;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity // JPA가 로딩될 때 JPA 사용하는 것으로 인식하고 관리함
-// @Table(name = "USER")   // USER라는 테이블 다루기
+@Table(name = "USER")   // 엔티티와 매핑할 테이블 지정(=USER라는 테이블 다루기)
 public class Member {
 
     @Id
