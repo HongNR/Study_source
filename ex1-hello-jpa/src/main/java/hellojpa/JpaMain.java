@@ -62,15 +62,24 @@ public class JpaMain {
             Member member = em.find(Member.class, 150L);
             member.setName("ZZZZZ");    // 데이터 수정 , em.persist는 작성하지 않음*/
 
-            Member member = new Member(200L, "member200");
+            /*Member member = new Member(200L, "member200");
             em.persist(member);
 
-            em.flush();     // 커밋 전 강제로 반영 = 직접 호출,,,,, JPQL 쿼리 실행 때는 자동으로 플러시 호출
+            em.flush();     // 커밋 전 강제로 반영 = 직접 호출,,,,, JPQL 쿼리 실행 때는 자동으로 플러시 호출*/
             /* 플러시란
             * 영속성 컨텍스트를 비우지 않음
             * 영속성 컨텍스트의 변경내용을 데이터베이스에 동기화
             * 트랜잭션이라는 작업단위가 중요 -> 커밋 직전에만 동기화하면 됨
             */
+
+            /*Member member = em.find(Member.class, 150L);
+            member.setName("AAAAA");
+
+            // 준영속 (=JPA가 관리 안 하겠다)
+            em.detach(member);  // 특정 엔티티 : 사실상 직접 쓸일은 없음
+            em.clear();         // 영속성 컨텍스트를 통으로 다 초기화
+            em.close();         // 영속성 종료*/
+
             System.out.println("=========");
 
             tx.commit();    // 커밋 필수 & 커밋하는 순간 sql을 데이터에 보냄
