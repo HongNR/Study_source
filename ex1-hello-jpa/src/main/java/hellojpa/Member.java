@@ -10,8 +10,9 @@ public class Member {
 
     @Id
     private Long id;
-    // @Column(name = "username")   // 컬럼명 지정
+     @Column(unique = true, length = 10)   // (name = "username")컬럼명 지정
     private String name;
+    private int age;
 
     public Member() {
         // default constructor
