@@ -84,22 +84,25 @@ public class JpaMain {
 
             Team team = new Team();
             team.setName("TeamA");
+//            team.getMembers().add(member);
             em.persist(team);
 
             Member member = new Member();
             member.setUsername("member1");
-            member.setTeam(team);
+            member.changeTeam(team);
             em.persist(member);
 
             em.flush();
             em.clear();
 
-            Member findMember = em.find(Member.class, member.getId());
-            List<Member> members = findMember.getTeam().getMembers();
+            /*  양방향 매핑 정리
+                단방향 매핑만으로도 이미 연관관계 매핑은 완료
+                양방향 매핑은 반대 방향으로 조회기능이 추가된 것 뿐
+                JPQL에서 역방향으로 탐색할 일이 많음
+                단방향 매핑을 잘 하고 양방향은 필요할 때 추가해도 됨
+            ** 연관관계의 주인은 외래 키의 위치를 기준으로 정해야함!
+            */
 
-            for (Member m : members) {
-                System.out.println("m = " +m.getUsername());
-            }
 
             tx.commit();    // 커밋 필수 & 커밋하는 순간 sql을 데이터에 보냄
         } catch (Exception e) {

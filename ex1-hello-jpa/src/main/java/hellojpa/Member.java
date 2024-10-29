@@ -71,8 +71,9 @@ public class Member {
         return team;
     }
 
-    public void setTeam(Team team) {
+    public void changeTeam(Team team) {
         this.team = team;
+        team.getMembers().add(this);    // 매핑시 양쪽에 값을 설정하기 위해 작성
     }
 
     public Member() {
