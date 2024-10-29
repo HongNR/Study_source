@@ -47,7 +47,7 @@ public class Member {
 //    @Column(name = "TEAM_ID")
 //    private Long teamId;
 
-    @ManyToOne                      // 관계
+    @ManyToOne                      // 관계(Many쪽이 무조건 주인)
     @JoinColumn(name = "TEMA_ID")   // join하는 pk
     private Team team;
 
