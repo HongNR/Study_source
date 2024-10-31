@@ -51,6 +51,10 @@ public class Member {
     @JoinColumn(name = "TEMA_ID")   // join하는 pk
     private Team team;
 
+    @OneToOne
+    @JoinColumn(name = "LOCKER_ID")
+    private Locker locker;
+
     public Long getId() {
         return id;
     }
