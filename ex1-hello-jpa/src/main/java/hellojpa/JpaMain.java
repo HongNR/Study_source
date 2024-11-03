@@ -82,19 +82,6 @@ public class JpaMain {
 
             System.out.println("=========");
 
-            Team team = new Team();
-            team.setName("TeamA");
-//            team.getMembers().add(member);
-            em.persist(team);
-
-            Member member = new Member();
-            member.setUsername("member1");
-            member.changeTeam(team);
-            em.persist(member);
-
-            em.flush();
-            em.clear();
-
             /*  양방향 매핑 정리
                 단방향 매핑만으로도 이미 연관관계 매핑은 완료
                 양방향 매핑은 반대 방향으로 조회기능이 추가된 것 뿐
@@ -103,6 +90,19 @@ public class JpaMain {
             ** 연관관계의 주인은 외래 키의 위치를 기준으로 정해야함!
             */
 
+            Movie movie = new Movie();
+            movie.setDirector("aaaa");
+            movie.setActor("bbbb");
+            movie.setName("바람과함께사라지다");
+            movie.setPrice(10000);
+
+            em.persist(movie);
+
+            em.flush();
+            em.clear();
+
+            Movie findMovie = em.find(Movie.class, movie.getId());
+            System.out.println("findMovie : "+ findMovie);
 
             tx.commit();    // 커밋 필수 & 커밋하는 순간 sql을 데이터에 보냄
         } catch (Exception e) {
