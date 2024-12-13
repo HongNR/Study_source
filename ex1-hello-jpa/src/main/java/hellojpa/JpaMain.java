@@ -90,7 +90,7 @@ public class JpaMain {
             ** 연관관계의 주인은 외래 키의 위치를 기준으로 정해야함!
             */
 
-            Movie movie = new Movie();
+            /*Movie movie = new Movie();
             movie.setDirector("aaaa");
             movie.setActor("bbbb");
             movie.setName("바람과함께사라지다");
@@ -102,7 +102,13 @@ public class JpaMain {
             em.clear();
 
             Movie findMovie = em.find(Movie.class, movie.getId());
-            System.out.println("findMovie : "+ findMovie);
+            System.out.println("findMovie : "+ findMovie);*/
+
+            Member member = em.find(Member.class, 1L);
+            printMember(member);
+//            emf.getPersistenceUnitUtil().isLoaded(member);
+
+//            printMemberAndTeam(member);
 
             tx.commit();    // 커밋 필수 & 커밋하는 순간 sql을 데이터에 보냄
         } catch (Exception e) {
@@ -113,5 +119,17 @@ public class JpaMain {
         }
 
         emf.close();
+    }
+
+    private static void printMember(Member member) {
+        System.out.println("member = " + member.getUsername());
+    }
+
+    private static void printMemberAndTeam(Member member) {
+        String username = member.getUsername();
+        System.out.println("username: " + username);
+
+        Team team = member.getTeam();
+        System.out.println("team: " + team);
     }
 }
