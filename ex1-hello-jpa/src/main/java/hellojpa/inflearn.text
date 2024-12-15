@@ -93,3 +93,13 @@ org.hibernate.Hibernate.initialize(entity);
  -> LAZY로 설정
 • @OneToMany, @ManyToMany는 기본이 지연 로딩
 
+
+값 타입 분류
+• 기본값 타입
+• 자바 기본 타입(int, double)
+• 래퍼 클래스(Integer, Long)
+• String
+
+• 임베디드 타입(embedded type, 복합 값 타입)
+• 컬렉션 값 타입(collection value type)
+
