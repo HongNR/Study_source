@@ -110,7 +110,5 @@ org.hibernate.Hibernate.initialize(entity);
     • @Embedded: 값 타입을 사용하는 곳에 표시
     • 기본 생성자 필수
 
-
-
 • 컬렉션 값 타입(collection value type)
 
