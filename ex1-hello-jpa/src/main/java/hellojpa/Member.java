@@ -2,6 +2,7 @@ package hellojpa;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity // JPA가 로딩될 때 JPA 사용하는 것으로 인식하고 관리함
@@ -83,6 +84,16 @@ public class Member {
     public Member() {
         // default constructor
     }
+
+    //기간 Period
+    @Embedded
+    private Period workPeriod;
+
+    //주소
+    @Embedded
+    private Address homeAddress;
+
+
 
 
 }

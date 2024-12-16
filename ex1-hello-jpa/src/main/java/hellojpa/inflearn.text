@@ -96,10 +96,21 @@ org.hibernate.Hibernate.initialize(entity);
 
 값 타입 분류
 • 기본값 타입
-• 자바 기본 타입(int, double)
-• 래퍼 클래스(Integer, Long)
-• String
+    • 자바 기본 타입(int, double)
+    • 래퍼 클래스(Integer, Long)
+    • String
 
 • 임베디드 타입(embedded type, 복합 값 타입)
+    • 새로운 값 타입을 직접 정의할 수 있음
+    • JPA는 임베디드 타입(embedded type)이라 함
+    • 주로 기본 값 타입을 모아서 만들어서 복합 값 타입이라고도 함
+    • int, String과 같은 값 타입
+임베디드 타입 사용법
+    • @Embeddable: 값 타입을 정의하는 곳에 표시
+    • @Embedded: 값 타입을 사용하는 곳에 표시
+    • 기본 생성자 필수
+
+
+
 • 컬렉션 값 타입(collection value type)
 
