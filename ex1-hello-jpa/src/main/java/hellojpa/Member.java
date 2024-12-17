@@ -3,7 +3,7 @@ package hellojpa;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.*;
 
 @Entity // JPA가 로딩될 때 JPA 사용하는 것으로 인식하고 관리함
 //@Table(name = "USER")   // 엔티티와 매핑할 테이블 지정(=USER라는 테이블 다루기)
@@ -48,6 +48,21 @@ public class Member {
 //    @Column(name = "TEAM_ID")
 //    private Long teamId;
 
+    @Embedded
+    private Address homeAddress;
+
+    @ElementCollection
+    @CollectionTable(name = "FAVORITE_FOOD",
+        joinColumns = @JoinColumn(name = "MEMBER_ID"))
+    private Set<String> favoriteFoods = new HashSet<>();
+
+    @ElementCollection
+    @CollectionTable(name = "ADDRESS",
+            joinColumns = @JoinColumn(name = "MEMBER_ID"))
+    private List<Address> addressHistory = new ArrayList<>();
+
+
+
     @ManyToOne(fetch = FetchType.LAZY)                      // 관계(Many쪽이 무조건 주인)
     @JoinColumn(name = "TEMA_ID")   // join하는 pk
     private Team team;
@@ -88,10 +103,6 @@ public class Member {
     //기간 Period
     @Embedded
     private Period workPeriod;
-
-    //주소
-    @Embedded
-    private Address homeAddress;
 
 
 
