@@ -110,6 +110,13 @@ public class JpaMain {
 
 //            printMemberAndTeam(member);
 
+
+            /* entity 대상으로 검색 */
+            em.createQuery(
+                    "select m from Member m where m.username like '%kim'"
+                    , Member.class
+            ).getResultList();
+
             tx.commit();    // 커밋 필수 & 커밋하는 순간 sql을 데이터에 보냄
         } catch (Exception e) {
             e.printStackTrace();
