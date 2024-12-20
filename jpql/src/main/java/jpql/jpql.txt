@@ -44,3 +44,11 @@ JPQL: SELECT m, t FROM Member m LEFT JOIN m.team t on t.name = 'A'
 2. 연관관계 없는 엔티티 외부 조인
 • 예) 회원의 이름과 팀의 이름이 같은 대상 외부 조인
 JPQL: SELECT m, t FROM Member m LEFT JOIN Team t on m.username = t.name
+
+
+<JPA 서브 쿼리 한계>
+• JPA는 WHERE, HAVING 절에서만 서브 쿼리 사용 가능
+• SELECT 절도 가능(하이버네이트에서 지원)
+
+• FROM 절의 서브 쿼리(인라인 뷰)는 현재 JPQL에서 불가능
+    • 조인으로 풀 수 있으면 풀어서 해결
