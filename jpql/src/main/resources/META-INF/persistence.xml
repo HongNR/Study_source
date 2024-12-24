@@ -16,6 +16,7 @@
             <property name="hibernate.format_sql" value="true"/>            <!--출력 포매팅-->
             <property name="hibernate.use_sql_comments"  value="true"/>     <!--쿼리가 나온 이유 설명-->
             <property name="hibernate.hbm2ddl.auto" value="create" />
+            <property name="hibernate.default_batch_fetch_size" value="100" />  <!-- fetch 설정-->
         </properties>
     </persistence-unit>
 
